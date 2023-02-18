@@ -1,0 +1,48 @@
+<h1>Show Address</h1>
+
+<ul>
+
+  <li>
+    <strong>Lineone:</strong>
+    <%= @address.lineOne %>
+  </li>
+
+  <li>
+    <strong>Linetwo:</strong>
+    <%= @address.lineTwo %>
+  </li>
+
+  <li>
+    <strong>Unit:</strong>
+    <%= @address.unit %>
+  </li>
+
+  <li>
+    <strong>City:</strong>
+    <%= @address.city %>
+  </li>
+
+  <li>
+    <strong>Postalcode:</strong>
+    <%= @address.postalCode %>
+  </li>
+
+  <li>
+    <strong>Province:</strong>
+    <%= @address.province %>
+  </li>
+
+  <li>
+    <strong>Latitude:</strong>
+    <%= @address.latitude %>
+  </li>
+
+  <li>
+    <strong>Longitude:</strong>
+    <%= @address.longitude %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.address_path(@conn, :edit, @address) %></span> |
+<span><%= link "Back", to: Routes.address_path(@conn, :index) %></span>

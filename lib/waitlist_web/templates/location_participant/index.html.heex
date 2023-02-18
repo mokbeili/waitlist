@@ -1,0 +1,28 @@
+<h1>Listing Location participants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Added at</th>
+      <th>Type</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for location_participant <- @location_participants do %>
+    <tr>
+      <td><%= location_participant.added_at %></td>
+      <td><%= location_participant.type %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.location_participant_path(@conn, :show, location_participant) %></span>
+        <span><%= link "Edit", to: Routes.location_participant_path(@conn, :edit, location_participant) %></span>
+        <span><%= link "Delete", to: Routes.location_participant_path(@conn, :delete, location_participant), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Location participant", to: Routes.location_participant_path(@conn, :new) %></span>

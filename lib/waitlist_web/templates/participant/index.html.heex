@@ -1,0 +1,32 @@
+<h1>Listing Participants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Middle name</th>
+      <th>Date of birth</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for participant <- @participants do %>
+    <tr>
+      <td><%= participant.first_name %></td>
+      <td><%= participant.last_name %></td>
+      <td><%= participant.middle_name %></td>
+      <td><%= participant.date_of_birth %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.participant_path(@conn, :show, participant) %></span>
+        <span><%= link "Edit", to: Routes.participant_path(@conn, :edit, participant) %></span>
+        <span><%= link "Delete", to: Routes.participant_path(@conn, :delete, participant), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Participant", to: Routes.participant_path(@conn, :new) %></span>

@@ -1,0 +1,19 @@
+<.form let={f} for={@changeset} action={@action}>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :added_at %>
+  <%= number_input f, :added_at %>
+  <%= error_tag f, :added_at %>
+
+  <%= label f, :type %>
+  <%= select f, :type, Ecto.Enum.values(Waitlist.LocationParticipants.LocationParticipant, :type), prompt: "Choose a value" %>
+  <%= error_tag f, :type %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+</.form>
