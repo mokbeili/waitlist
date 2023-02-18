@@ -1,0 +1,18 @@
+<h1>Show Location participant</h1>
+
+<ul>
+
+  <li>
+    <strong>Added at:</strong>
+    <%= @location_participant.added_at %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @location_participant.type %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.location_participant_path(@conn, :edit, @location_participant) %></span> |
+<span><%= link "Back", to: Routes.location_participant_path(@conn, :index) %></span>

@@ -1,0 +1,32 @@
+<h1>Listing Guardians</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Middle name</th>
+      <th>Date of birth</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for guardian <- @guardians do %>
+    <tr>
+      <td><%= guardian.first_name %></td>
+      <td><%= guardian.last_name %></td>
+      <td><%= guardian.middle_name %></td>
+      <td><%= guardian.date_of_birth %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.guardian_path(@conn, :show, guardian) %></span>
+        <span><%= link "Edit", to: Routes.guardian_path(@conn, :edit, guardian) %></span>
+        <span><%= link "Delete", to: Routes.guardian_path(@conn, :delete, guardian), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Guardian", to: Routes.guardian_path(@conn, :new) %></span>

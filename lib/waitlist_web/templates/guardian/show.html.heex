@@ -1,0 +1,28 @@
+<h1>Show Guardian</h1>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @guardian.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @guardian.last_name %>
+  </li>
+
+  <li>
+    <strong>Middle name:</strong>
+    <%= @guardian.middle_name %>
+  </li>
+
+  <li>
+    <strong>Date of birth:</strong>
+    <%= @guardian.date_of_birth %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.guardian_path(@conn, :edit, @guardian) %></span> |
+<span><%= link "Back", to: Routes.guardian_path(@conn, :index) %></span>

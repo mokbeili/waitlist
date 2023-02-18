@@ -1,0 +1,28 @@
+<h1>Show Participant</h1>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @participant.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @participant.last_name %>
+  </li>
+
+  <li>
+    <strong>Middle name:</strong>
+    <%= @participant.middle_name %>
+  </li>
+
+  <li>
+    <strong>Date of birth:</strong>
+    <%= @participant.date_of_birth %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.participant_path(@conn, :edit, @participant) %></span> |
+<span><%= link "Back", to: Routes.participant_path(@conn, :index) %></span>

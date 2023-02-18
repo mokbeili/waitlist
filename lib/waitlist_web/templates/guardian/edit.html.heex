@@ -1,0 +1,5 @@
+<h1>Edit Guardian</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.guardian_path(@conn, :update, @guardian)) %>
+
+<span><%= link "Back", to: Routes.guardian_path(@conn, :index) %></span>
