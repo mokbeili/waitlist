@@ -1,120 +1,264 @@
-/* This file is for your main application CSS */
-@import "./phoenix.css";
-
-/* Alerts and form errors used by phx.new */
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-}
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
-}
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
-.alert p {
-  margin-bottom: 0;
-}
-.alert:empty {
-  display: none;
-}
-.invalid-feedback {
-  color: #a94442;
-  display: block;
-  margin: -1rem 0 2rem;
+/* Reset CSS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* LiveView specific classes for your customization */
-.phx-no-feedback.invalid-feedback,
-.phx-no-feedback .invalid-feedback {
-  display: none;
+/* Basic styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-.phx-click-loading {
-  opacity: 0.5;
-  transition: opacity 1s ease-out;
-}
-
-.phx-loading{
-  cursor: wait;
-}
-
-.phx-modal {
-  opacity: 1!important;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.phx-modal-content {
-  background-color: #fefefe;
-  margin: 15vh auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.phx-modal-close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.phx-modal-close:hover,
-.phx-modal-close:focus {
-  color: black;
+/* Links */
+a {
+  color: #2980b9;
   text-decoration: none;
+  border-bottom: 2px solid #2980b9;
+  transition: border-bottom 0.3s ease-in-out;
+}
+
+a:hover {
+  border-bottom: 2px solid #f1c40f;
+}
+
+header {
+  background-color: #2c3e50;
+  position: fixed;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em;
+}
+
+header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: #fff;
+  color: #2c3e50;
+}
+
+nav li {
+  margin-right: 1em;
+}
+
+main {
+  padding: 1em;
+}
+
+section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+  color: #f1c40f;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4em 1em 1em; /* Add padding to top, but not to bottom or sides */
+}
+
+/* .hero {
+  background-image: url('path/to/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+} */
+
+.hero h1 {
+  font-size: 3em;
+  color: #fff;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.5em;
+  color: #fff;
+  margin: 0;
+}
+
+/* Typography */
+p {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+h5 {
+  font-size: 1.2em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 0.3em;
+  margin-bottom: 1em;
+}
+
+input[type="submit"] {
+  background-color: #f1c40f;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.3em;
+  transition: background-color 0.3s ease-in-out;
   cursor: pointer;
 }
 
-.fade-in-scale {
-  animation: 0.2s ease-in 0s normal forwards 1 fade-in-scale-keys;
+input[type="submit"]:hover {
+  background-color: #fff;
+  color: #f1c40f;
 }
 
-.fade-out-scale {
-  animation: 0.2s ease-out 0s normal forwards 1 fade-out-scale-keys;
+/* Buttons */
+button {
+  display: inline-block;
+  background-color: #f1c40f;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.3em;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-.fade-in {
-  animation: 0.2s ease-out 0s normal forwards 1 fade-in-keys;
-}
-.fade-out {
-  animation: 0.2s ease-out 0s normal forwards 1 fade-out-keys;
+button:hover {
+  background-color: #fff;
+  color: #f1c40f;
 }
 
-@keyframes fade-in-scale-keys{
-  0% { scale: 0.95; opacity: 0; }
-  100% { scale: 1.0; opacity: 1; }
+/* Checkboxes */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid #2980b9;
+  position: relative;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  cursor: pointer;
 }
 
-@keyframes fade-out-scale-keys{
-  0% { scale: 1.0; opacity: 1; }
-  100% { scale: 0.95; opacity: 0; }
+input[type="checkbox"]:checked:before {
+  content: '\2713';
+  font-size: 1.2em;
+  color: #2980b9;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@keyframes fade-in-keys{
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+input[type="checkbox"]:hover {
+  border-color: #f1c40f;
 }
 
-@keyframes fade-out-keys{
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+input[type="checkbox"]:focus {
+  outline: none;
+  border-color: #f1c40f;
+}
+
+/* Labels */
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+label.required:after {
+  content: '*';
+  color: #e74c3c;
+  margin-left: 0.2em;
+}
+
+label.error {
+  color: #e74c3c;
 }
