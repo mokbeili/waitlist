@@ -4,8 +4,8 @@ defmodule Waitlist.Providers.Locations.Location do
 
   schema "locations" do
     field :name, :string
-    field :address_id, :id
-    field :provider_id, :id
+    belongs_to :provider, Provider
+    has_one :address, Address
 
     timestamps()
   end

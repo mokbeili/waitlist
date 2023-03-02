@@ -5,9 +5,13 @@ defmodule WaitlistWeb.UserRegistrationController do
   alias Waitlist.Accounts.User
   alias WaitlistWeb.UserAuth
 
+  alias Waitlist.Participants
+  alias Waitlist.Participants.Guardian
+
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
-    render(conn, "new.html", changeset: changeset)
+    guardianChangeset = Participants.change_guardian(%Guardian{})
+    render(conn, "new.html", changeset: changeset, guardianChangeset: guardianChangeset)
   end
 
   def create(conn, %{"user" => user_params}) do
