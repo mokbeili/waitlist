@@ -5,8 +5,9 @@ defmodule Waitlist.Providers.Provider do
   schema "providers" do
     field :licensed, :boolean, default: false
     field :name, :string
-    field :user_id, :id
-    field :address_id, :id
+    belongs_to :user, User
+    has_many :locations, Locations
+    has_one :address, Address
 
     timestamps()
   end

@@ -11,14 +11,14 @@
   </head>
   <body>
     <header>
-        <h1>Baby Wait</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Contact</a></li>
-                <%= render "_user_menu.html", assigns %>
-            </ul>
-        </nav>
+      <nav>
+        <h1>
+          <a href="/">
+          Baby Wait
+          </a>
+        </h1>
+      </nav>
+      <%= render "_user_menu.html", assigns %>
     </header>
     <main>
         <%= @inner_content %>
