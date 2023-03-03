@@ -11,6 +11,7 @@ defmodule Waitlist.Addresses.Address do
     field :postalCode, :string
     field :province, :string
     field :unit, :string
+    belongs_to :user, User
 
     timestamps()
   end

@@ -8,6 +8,8 @@ defmodule WaitlistWeb.UserRegistrationController do
   alias Waitlist.Participants
   alias Waitlist.Participants.Guardian
 
+  alias WaitlistWeb.Router.Helpers, as: Routes
+
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
     guardianChangeset = Participants.change_guardian(%Guardian{})
@@ -25,6 +27,7 @@ defmodule WaitlistWeb.UserRegistrationController do
 
         conn
         |> put_flash(:info, "User created successfully.")
+        |> put_session(:user_return_to, Routes.address_path(conn, :new))
         |> UserAuth.log_in_user(user)
 
       {:error, %Ecto.Changeset{} = changeset} ->

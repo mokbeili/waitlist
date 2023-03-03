@@ -89,4 +89,12 @@ defmodule WaitlistWeb.Router do
     get "/users/confirm/:token", UserConfirmationController, :edit
     post "/users/confirm/:token", UserConfirmationController, :update
   end
+
+  scope "/address", WaitlistWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/new", AddressController, :new
+    post "/create", AddressController, :create
+  end
+
 end
