@@ -9,7 +9,6 @@
   <%= text_input f, :lineOne %>
   <%= error_tag f, :lineOne %>
 
-  <%= label f, :lineTwo %>
   <%= text_input f, :lineTwo %>
   <%= error_tag f, :lineTwo %>
 
@@ -28,14 +27,6 @@
   <%= label f, :province %>
   <%= text_input f, :province %>
   <%= error_tag f, :province %>
-
-  <%= label f, :latitude %>
-  <%= number_input f, :latitude, step: "any" %>
-  <%= error_tag f, :latitude %>
-
-  <%= label f, :longitude %>
-  <%= number_input f, :longitude, step: "any" %>
-  <%= error_tag f, :longitude %>
 
   <div>
     <%= submit "Save" %>
