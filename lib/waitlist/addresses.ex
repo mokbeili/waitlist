@@ -49,8 +49,8 @@ defmodule Waitlist.Addresses do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_address(attrs \\ %{}) do
-    %Address{}
+  def create_address(attrs \\ %{}, userId) do
+    %Address{user_id: userId}
     |> Address.changeset(attrs)
     |> Repo.insert()
   end

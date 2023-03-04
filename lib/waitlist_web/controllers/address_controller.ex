@@ -15,7 +15,7 @@ defmodule WaitlistWeb.AddressController do
   end
 
   def create(conn, %{"address" => address_params}) do
-    case Addresses.create_address(address_params) do
+    case Addresses.create_address(address_params, conn.assigns.current_user.id) do
       {:ok, address} ->
         conn
         |> put_flash(:info, "Address created successfully.")
