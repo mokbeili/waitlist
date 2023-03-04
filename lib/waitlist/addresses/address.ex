@@ -20,6 +20,6 @@ defmodule Waitlist.Addresses.Address do
   def changeset(address, attrs) do
     address
     |> cast(attrs, [:lineOne, :lineTwo, :unit, :city, :postalCode, :province, :latitude, :longitude])
-    |> validate_required([:lineOne, :lineTwo, :unit, :city, :postalCode, :province, :latitude, :longitude])
+    |> validate_required([:lineOne, :city, :postalCode, :province])
   end
 end
