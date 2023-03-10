@@ -1,4 +1,5 @@
 defmodule WaitlistWeb.UserAuth do
+  import Logger
   import Plug.Conn
   import Phoenix.Controller
 

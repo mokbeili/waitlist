@@ -1,4 +1,7 @@
 defmodule Waitlist.Accounts.User do
+  alias Waitlist.Addresses
+  alias Config.Provider
+  alias Waitlist.Participants.Guardian
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -9,6 +12,7 @@ defmodule Waitlist.Accounts.User do
     field :confirmed_at, :naive_datetime
     has_one :guardian, Guardian
     has_one :provider, Provider
+    has_many :addresses, Addresses.Address
 
     timestamps()
   end

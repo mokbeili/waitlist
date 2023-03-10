@@ -1,4 +1,6 @@
 defmodule Waitlist.Participants.Participants.Participant do
+  alias Waitlist.Participants.Guardian
+  alias Waitlist.Addresses
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -8,7 +10,7 @@ defmodule Waitlist.Participants.Participants.Participant do
     field :last_name, :string
     field :middle_name, :string
     belongs_to :guardian, Guardian
-    has_one :address, Address
+    has_one :address, Addresses.Address
 
     timestamps()
   end

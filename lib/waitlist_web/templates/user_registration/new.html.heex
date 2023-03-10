@@ -15,14 +15,6 @@
   <%= password_input f, :password, required: true %>
   <%= error_tag f, :password %>
 
-  <div class="toggle">
-    <p>I'm a Parent / Guardian</p>
-    <label class="switch">
-      <input type="checkbox" phx-click="add-variant">
-      <span class="slider"></span>
-    </label>
-    <p> I represent a Daycare</p>
-  </div>
   <div>
     <%= submit "Register" %>
   </div>

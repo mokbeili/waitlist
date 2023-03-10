@@ -3,6 +3,7 @@ defmodule Waitlist.Accounts do
   The Accounts context.
   """
 
+  import Logger
   import Ecto.Query, warn: false
   alias Waitlist.Repo
 

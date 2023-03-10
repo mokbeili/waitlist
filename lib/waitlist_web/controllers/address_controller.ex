@@ -19,7 +19,7 @@ defmodule WaitlistWeb.AddressController do
       {:ok, address} ->
         conn
         |> put_flash(:info, "Address created successfully.")
-        |> redirect(to: Routes.address_path(conn, :show, address))
+        |> redirect(to: Routes.shared_path(conn, :new))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
