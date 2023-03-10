@@ -1,5 +1,6 @@
 defmodule WaitlistWeb.Router do
   use WaitlistWeb, :router
+  import Phoenix.LiveView.Router
 
   import WaitlistWeb.UserAuth
 
@@ -97,4 +98,20 @@ defmodule WaitlistWeb.Router do
     post "/create", AddressController, :create
   end
 
+  scope "/shared", WaitlistWeb do
+    pipe_through [:browser, :require_authenticated_user]
+    live "/new", SharedLive
+  end
+
+  scope "/guardian", WaitlistWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    post "/create", GuardianController, :create
+  end
+
+  scope "/provider", WaitlistWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    post "/create", ProviderController, :create
+  end
 end

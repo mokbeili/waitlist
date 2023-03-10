@@ -17,8 +17,9 @@ defmodule Waitlist.Addresses do
       [%Address{}, ...]
 
   """
-  def list_addresses do
-    Repo.all(Address)
+
+  def list_addresses(userId) do
+    Repo.all(from a in Address, where: a.user_id == ^userId, select: a)
   end
 
   @doc """
