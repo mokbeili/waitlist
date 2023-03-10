@@ -37,6 +37,10 @@ defmodule Waitlist.Participants do
   """
   def get_guardian!(id), do: Repo.get!(Guardian, id)
 
+  def get_guardians_by_user(id) do
+    Repo.all(from g in Guardian, where: g.user_id == ^id)
+  end
+
   @doc """
   Creates a guardian.
 
@@ -144,8 +148,8 @@ defmodule Waitlist.Participants do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_participant(attrs \\ %{}) do
-    %Participant{}
+  def create_participant(attrs \\ %{}, addressId, guardianId) do
+    %Participant{guardian_id: guardianId, address_id: addressId}
     |> Participant.changeset(attrs)
     |> Repo.insert()
   end

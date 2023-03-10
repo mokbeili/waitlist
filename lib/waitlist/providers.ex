@@ -49,8 +49,8 @@ defmodule Waitlist.Providers do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_provider(attrs \\ %{}) do
-    %Provider{}
+  def create_provider(attrs \\ %{}, addressId, userId) do
+    %Provider{user_id: userId, address_id: addressId}
     |> Provider.changeset(attrs)
     |> Repo.insert()
   end
