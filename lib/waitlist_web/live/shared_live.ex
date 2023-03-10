@@ -42,7 +42,20 @@ defmodule WaitlistWeb.SharedLive do
           </.form>
         <% end %>
         <%= if @type === "provider" do %>
-          <p>Provider</p>
+          <.form let={f} for={@provider_changeset} phx-change="validate_provider" phx-submit="save-provider">
+
+          <%= label f, :name %>
+          <%= text_input f, :name %>
+          <%= error_tag f, :name %>
+
+          <%= label f, :licensed %>
+          <%= checkbox f, :licensed %>
+          <%= error_tag f, :licensed %>
+
+          <div>
+            <%= submit "Save" %>
+          </div>
+        </.form>
         <% end %>
       </div>
     """
@@ -83,6 +96,27 @@ defmodule WaitlistWeb.SharedLive do
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, guardian_changeset: changeset)}
+    end
+  end
+
+  def handle_event("validate_provider", %{"provider" => params}, socket) do
+    changeset =
+      %Provider{}
+      |> Provider.changeset(params)
+      |> Map.put(:action, :insert)
+
+    {:noreply, assign(socket, provider_changeset: changeset)}
+  end
+
+  def handle_event("save-provider", %{"provider" => provider_params}, socket) do
+    addresses = Addresses.list_addresses(socket.assigns.current_user.id)
+    case Providers.create_provider(provider_params, List.first(addresses).id, socket.assigns.current_user.id) do
+      {:ok} ->
+        socket
+        |> put_flash(:info, "Provider created successfully.")
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        {:noreply, assign(socket, provider_changeset: changeset)}
     end
   end
 

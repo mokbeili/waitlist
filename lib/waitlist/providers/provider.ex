@@ -10,7 +10,7 @@ defmodule Waitlist.Providers.Provider do
     field :name, :string
     belongs_to :user, Accounts.User
     has_many :locations, Location
-    has_one :address, Addresses.Address
+    belongs_to :address, Addresses.Address
 
     timestamps()
   end

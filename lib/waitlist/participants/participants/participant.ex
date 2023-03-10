@@ -10,7 +10,7 @@ defmodule Waitlist.Participants.Participants.Participant do
     field :last_name, :string
     field :middle_name, :string
     belongs_to :guardian, Guardian
-    has_one :address, Addresses.Address
+    belongs_to :address, Addresses.Address
 
     timestamps()
   end
