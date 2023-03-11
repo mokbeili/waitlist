@@ -103,15 +103,13 @@ defmodule WaitlistWeb.Router do
     live "/new", SharedLive
   end
 
-  scope "/participants", WaitlistWeb do
-    pipe_through [:browser, :require_authenticated_user]
-    live "/create", ParticipantsLive
-  end
-
-  scope "/guardian", WaitlistWeb do
+  scope "/guardians", WaitlistWeb do
     pipe_through [:browser, :require_authenticated_user]
 
     post "/create", GuardianController, :create
+
+    get "/new-participant", GuardianController, :new_participant
+    post "/create-participant", GuardianController, :create_participant
   end
 
   scope "/provider", WaitlistWeb do

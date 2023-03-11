@@ -3,6 +3,7 @@ defmodule WaitlistWeb.GuardianController do
 
   alias Waitlist.Participants
   alias Waitlist.Participants.Guardian
+  alias Waitlist.Addresses
 
   def index(conn, _params) do
     guardians = Participants.list_guardians()
@@ -14,12 +15,16 @@ defmodule WaitlistWeb.GuardianController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"guardian" => guardian_params}) do
-    case Participants.create_guardian(guardian_params) do
-      {:ok, guardian} ->
+  def new_participant(conn, _params) do
+    changeset = Participants.change_participant(%Participants.Participants.Participant{})
+    render(conn, "new-participant.html", changeset: changeset, addresses: Addresses.list_addresses(conn.assigns.current_user.id))
+  end
+
+  def create_participant(conn, %{"participant" => participant_params}) do
+    case Participants.create_participant(participant_params, List.first(conn.assigns.addresses).id, conn.assigns.current_user.id) do
+      {:ok, participant} ->
         conn
-        |> put_flash(:info, "Guardian created successfully.")
-        |> redirect(to: Routes.guardian_path(conn, :show, guardian))
+        |> put_flash(:info, "Participant created successfully.")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
