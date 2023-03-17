@@ -1,4 +1,5 @@
 defmodule WaitlistWeb.AddressController do
+  import Logger
   use WaitlistWeb, :controller
 
   alias Waitlist.Addresses

@@ -20,6 +20,9 @@ defmodule Waitlist.Application do
       # {Waitlist.Worker, arg}
     ]
 
+    {:ok, config} = SecretVault.Config.fetch_from_current_env(:waitlist)
+    SecretVault.Storage.to_persistent_term(config)
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Waitlist.Supervisor]

@@ -7,6 +7,9 @@
 # General application configuration
 import Config
 
+config :waitlist, :secret_vault,
+  default: [password: System.fetch_env!("SECRET_VAULT_PASSWORD")]
+
 config :waitlist,
   ecto_repos: [Waitlist.Repo]
 

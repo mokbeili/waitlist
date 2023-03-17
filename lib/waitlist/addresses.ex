@@ -4,6 +4,7 @@ defmodule Waitlist.Addresses do
   """
 
   import Ecto.Query, warn: false
+  import Logger
   alias Waitlist.Repo
 
   alias Waitlist.Addresses.Address
@@ -51,7 +52,9 @@ defmodule Waitlist.Addresses do
 
   """
   def create_address(attrs \\ %{}, userId) do
-    %Address{user_id: userId}
+    {:ok, results } = geocode(attrs)
+    locationData = List.first(Map.get(results, "results"))["geometry"]["location"]
+    %Address{user_id: userId, latitude: locationData["lat"], longitude: locationData["lng"]}
     |> Address.changeset(attrs)
     |> Repo.insert()
   end
@@ -101,5 +104,19 @@ defmodule Waitlist.Addresses do
   """
   def change_address(%Address{} = address, attrs \\ %{}) do
     Address.changeset(address, attrs)
+  end
+
+  @spec geocode(map) ::
+          {:error, binary | HTTPoison.Error.t()}
+          | {:ok, map}
+          | {:error, binary | HTTPoison.Error.t(), binary}
+  def geocode(address_params \\ %{}) do
+    GoogleMaps.geocode(Enum.join([
+      Map.get(address_params, "lineOne"),
+      Map.get(address_params, "lineTwo"),
+      Map.get(address_params, "city"),
+      Map.get(address_params, "province"),
+      Map.get(address_params, "postalCode")],
+      key: "")
   end
 end
