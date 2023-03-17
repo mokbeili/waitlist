@@ -116,7 +116,7 @@ defmodule Waitlist.Addresses do
       Map.get(address_params, "lineTwo"),
       Map.get(address_params, "city"),
       Map.get(address_params, "province"),
-      Map.get(address_params, "postalCode")],
-      key: "")
+      Map.get(address_params, "postalCode")]),
+      key: :persistent_term.get("google_maps_api_key"))
   end
 end
